@@ -4,12 +4,17 @@ import 'package:bookshelf/entity/book_shelf_entity.dart';
 import 'package:http/http.dart' as http;
 
 class BookRepository {
-  final String baseUrl = 'https://api.itbook.store/1.0/search/mongoDB';
+  final String baseUrl = 'https://api.itbook.store/1.0/search';
 
   @override
-  Future<BookShelf> getSearchBook() async {
+  Future<BookShelf> getSearchBook(String bookName, {String paging}) async {
+    String query = bookName;
+    if (paging != null) {
+      query = '$bookName/$paging';
+    }
     try {
-      final response = await http.get('$baseUrl');
+      final response = await http.get('$baseUrl/$query');
+      print(response.body);
       if (response.statusCode == 200) {
         print(BookShelf.fromJson(json.decode(response.body)).total);
         return BookShelf.fromJson(json.decode(response.body));

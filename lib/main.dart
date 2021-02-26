@@ -1,3 +1,4 @@
+import 'package:bookshelf/routes.dart';
 import 'package:bookshelf/screen/search_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +15,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: SearchScreen(),
+      initialRoute: Routes.main,
+      onGenerateRoute: RouteGenerator().generateRoute,
     );
   }
 }
