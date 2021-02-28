@@ -1,8 +1,8 @@
 import 'package:bookshelf/entity/book_detail_entity.dart';
 import 'package:bookshelf/model/book_detail_model.dart';
+import 'package:bookshelf/widget/book_detail_table_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class BookDetailArgs {
   final String title;
@@ -36,54 +36,49 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
       body: Selector<BookDetailModel, BookDetail>(
         selector: (context, data) => data.bookDetail,
         builder: (context, bookDetail, _) {
-          return Center(
+          return
+              // Center(
+              // child:
+              SingleChildScrollView(
             child: Column(
               children: [
-                GestureDetector(
-                  child: Hero(
-                    tag: widget.title,
-                    child: Image.network(widget.imageUrl),
+                Center(
+                  child: GestureDetector(
+                    child: Hero(
+                      tag: widget.title,
+                      // ),
+                      child: Image.network(widget.imageUrl),
+                    ),
+                    onTap: () => Navigator.pop(context),
                   ),
-                  onTap: () => Navigator.pop(context),
                 ),
                 Stack(
                   children: [
                     bookDetail == null
                         ? CircularProgressIndicator()
-                        : Column(
-                            children: [
-                              Text('title : ${bookDetail?.title}'),
-                              Text('subtitle : ${bookDetail.subtitle}'),
-                              Text('authors : ${bookDetail.authors}'),
-                              Text('publisher : ${bookDetail.publisher}'),
-                              Text('language : ${bookDetail.language}'),
-                              Text('isbn10 : ${bookDetail.isbn10}'),
-                              Text('isbn13 : ${bookDetail.isbn13}'),
-                              Text('pages : ${bookDetail.pages}'),
-                              Text('year : ${bookDetail.year}'),
-                              Text('rating: ${bookDetail.rating}'),
-                              Text('desc : ${bookDetail.desc}'),
-                              Text('price: ${bookDetail.price}'),
-                              RaisedButton(
-                                  onPressed: () => _launchURL(bookDetail.url),
-                                  child: Text('URL'))
-                            ],
-                          ),
+                        : BookDetailTable(
+                            title: bookDetail.title,
+                            subtitle: bookDetail.subtitle,
+                            authors: bookDetail.authors,
+                            publisher: bookDetail.publisher,
+                            language: bookDetail.language,
+                            isbn10: bookDetail.isbn10,
+                            isbn13: bookDetail.isbn13,
+                            pages: bookDetail.pages,
+                            year: bookDetail.year,
+                            rating: bookDetail.rating,
+                            desc: bookDetail.desc,
+                            price: bookDetail.price,
+                            url: bookDetail.url,
+                          )
                   ],
                 ),
               ],
             ),
+            // ),
           );
         },
       ),
     );
-  }
-
-  void _launchURL(String url) async {
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
-    }
   }
 }

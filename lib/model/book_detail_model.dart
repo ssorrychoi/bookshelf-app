@@ -21,7 +21,6 @@ class BookDetailModel extends ChangeNotifier {
       final result = await _bookRepository.getBookDetail(isbn13);
       _resultBookDetail = ApiResult.completed(result);
       _bookDetail = result;
-      print('model : ${result.title}');
       notifyListeners();
     } catch (e) {
       _resultBookDetail = ApiResult.error(e);

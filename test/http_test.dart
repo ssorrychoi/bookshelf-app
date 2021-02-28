@@ -9,10 +9,8 @@ import 'dart:convert';
 
 import 'package:bookshelf/entity/book_detail_entity.dart';
 import 'package:bookshelf/entity/book_shelf_entity.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:bookshelf/main.dart';
 import 'package:http/http.dart' as http;
 
 void main() {

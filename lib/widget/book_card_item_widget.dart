@@ -51,20 +51,15 @@ class BookCardItem extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(right: 10),
                     child: Text(
-                      // result.data[index].title,
                       title,
                       overflow: TextOverflow.ellipsis,
-                      // textAlign: TextAlign.start,
                     ),
                   ),
                   const SizedBox(height: 8),
-                  // result.data[index].subtitle == ''
-                  subtitle == ''
-                      ? Text('Subtitle is Empty')
-                      : Text(
-                          subtitle,
-                          overflow: TextOverflow.ellipsis,
-                        ),
+                  Text(
+                    subtitle == '' ? 'Subtitle is Empty' : subtitle,
+                    overflow: TextOverflow.ellipsis,
+                  ),
                   const SizedBox(height: 8),
                   Row(
                     children: [
@@ -74,9 +69,12 @@ class BookCardItem extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 8),
-                  RaisedButton(
-                    onPressed: _launchURL,
-                    child: Text('Go to WebSite'),
+                  Container(
+                    height: 30,
+                    child: RaisedButton(
+                      onPressed: _launchURL,
+                      child: Text('Go to WebSite'),
+                    ),
                   ),
                 ],
               ),

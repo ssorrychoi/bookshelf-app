@@ -27,17 +27,22 @@ class SearchModel extends ChangeNotifier {
     notifyListeners();
 
     try {
-      print('clicked model');
       final result =
           await _bookRepository.getSearchBook(bookName, paging: paging);
-      // print(result);
       _resultBooks = ApiResult.completed(result.books);
       _paging = (int.parse(result.page) + 1).toString();
       _bookList = result.books;
-      print('search Book\n$_bookList');
       notifyListeners();
     } catch (e) {
-      _resultBooks = ApiResult.error(e);
+      print('search Err : $e');
+      if (e is ApiException) {
+        print('is Api Exception');
+        _resultBooks = ApiResult.error(e);
+        notifyListeners();
+      }
+
+      print(e.runtimeType);
+      notifyListeners();
     }
   }
 
@@ -52,13 +57,15 @@ class SearchModel extends ChangeNotifier {
     try {
       final result =
           await _bookRepository.getSearchBook(bookName, paging: _paging);
-      // _resultBooks = ApiResult.completed(result.books);
       _bookList.addAll(result.books);
       _paging = (int.parse(result.page) + 1).toString();
-      print('addBook : $_bookList');
       notifyListeners();
     } catch (e) {
       print(e);
+      if (e is ApiException) {
+        print(e);
+        _resultBooks = ApiResult.error(e);
+      }
     } finally {
       _isMoreLoading = false;
       notifyListeners();
