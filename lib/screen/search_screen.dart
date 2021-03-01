@@ -158,6 +158,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                   );
                                 }
                                 return Padding(
+                                  key: const Key(SendBirdKeys.bookCard),
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 20),
                                   child: BookCardItem(
