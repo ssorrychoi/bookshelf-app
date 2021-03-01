@@ -178,6 +178,18 @@ class _SearchScreenState extends State<SearchScreen> {
                         },
                       );
                     case Status.ERROR:
+                      return SliverList(
+                        delegate: SliverChildListDelegate(
+                          [
+                            const SizedBox(height: 40),
+                            Center(
+                                child: Text(
+                              result.error.toString(),
+                              key: const Key(SendBirdKeys.mainSentence),
+                            )),
+                          ],
+                        ),
+                      );
                     case Status.LOADING:
                       return SliverList(
                         delegate: SliverChildListDelegate([

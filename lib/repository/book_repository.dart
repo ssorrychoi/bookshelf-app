@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:bookshelf/entity/book_detail_entity.dart';
 import 'package:bookshelf/entity/book_shelf_entity.dart';
@@ -15,14 +16,17 @@ class BookRepository {
     }
     try {
       final response = await http.get('$baseUrl/search/$query');
+      print(response.statusCode);
       if (response.statusCode == 200) {
         return BookShelf.fromJson(json.decode(response.body));
+      } else if (response.statusCode < 500) {
+        throw ApiException({'code': '${response.statusCode}'});
       } else {
-        print('ERR Repo : ${response.statusCode}');
-        throw Exception(json.decode(response.body)['error']);
+        throw ApiException({'code': '${response.statusCode}'});
       }
     } catch (e) {
       if (e is ApiException) rethrow;
+      throw ApiException({'code': '502'});
     }
   }
 
@@ -30,13 +34,16 @@ class BookRepository {
     try {
       final response = await http.get('$baseUrl/books/$isbn13');
 
-      if (response.statusCode == 200) {
+      if (response.statusCode < 400) {
         return BookDetail.fromJson(json.decode(response.body));
+      } else if (response.statusCode < 500) {
+        throw ApiException({'code': '${response.statusCode}'});
       } else {
-        throw Exception(json.decode(response.body)['error']);
+        throw ApiException({'code': '${response.statusCode}'});
       }
     } catch (e) {
       if (e is ApiException) rethrow;
+      throw ApiException({'code': '502'});
     }
   }
 }

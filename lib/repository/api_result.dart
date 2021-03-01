@@ -22,23 +22,15 @@ enum Status { LOADING, COMPLETED, ERROR }
 class ApiException implements Exception {
   final dynamic error;
   String _code;
-  String _status;
-  String _message;
 
   ApiException(this.error) {
     _code = error['code'];
-    _status = error['status'];
-    _message = error['message'];
   }
 
   String get code => _code;
 
-  String get status => _status;
-
-  String get message => _message;
-
   @override
   String toString() {
-    return 'ApiException($_code, $_status, $_message)';
+    return 'ApiException($_code)';
   }
 }

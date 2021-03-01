@@ -34,14 +34,7 @@ class SearchModel extends ChangeNotifier {
       _bookList = result.books;
       notifyListeners();
     } catch (e) {
-      print('search Err : $e');
-      if (e is ApiException) {
-        print('is Api Exception');
-        _resultBooks = ApiResult.error(e);
-        notifyListeners();
-      }
-
-      print(e.runtimeType);
+      _resultBooks = ApiResult.error(e);
       notifyListeners();
     }
   }
@@ -61,9 +54,7 @@ class SearchModel extends ChangeNotifier {
       _paging = (int.parse(result.page) + 1).toString();
       notifyListeners();
     } catch (e) {
-      print(e);
       if (e is ApiException) {
-        print(e);
         _resultBooks = ApiResult.error(e);
       }
     } finally {

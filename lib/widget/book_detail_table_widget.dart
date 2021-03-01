@@ -35,143 +35,140 @@ class BookDetailTable extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: Column(
-        children: [
-          const Divider(
-            color: Colors.black,
-            height: 1,
-            thickness: 1,
-          ),
-          BookDetailRow(
-            setting: 'title',
-            result: title,
-          ),
-          const Divider(
-            color: Colors.black,
-            height: 1,
-            thickness: 1,
-          ),
-          BookDetailRow(
-            setting: 'subtitle',
-            result: subtitle,
-          ),
-          const Divider(
-            color: Colors.black,
-            height: 1,
-            thickness: 1,
-          ),
-          BookDetailRow(
-            setting: 'authors',
-            result: authors,
-          ),
-          const Divider(
-            color: Colors.black,
-            height: 1,
-            thickness: 1,
-          ),
-          BookDetailRow(
-            setting: 'publisher',
-            result: publisher,
-          ),
-          const Divider(
-            color: Colors.black,
-            height: 1,
-            thickness: 1,
-          ),
-          BookDetailRow(
-            setting: 'language',
-            result: language,
-          ),
-          const Divider(
-            color: Colors.black,
-            height: 1,
-            thickness: 1,
-          ),
-          BookDetailRow(
-            setting: 'isbn10',
-            result: isbn10,
-          ),
-          const Divider(
-            color: Colors.black,
-            height: 1,
-            thickness: 1,
-          ),
-          BookDetailRow(
-            setting: 'isbn13',
-            result: isbn13,
-          ),
-          const Divider(
-            color: Colors.black,
-            height: 1,
-            thickness: 1,
-          ),
-          BookDetailRow(
-            setting: 'pages',
-            result: pages,
-          ),
-          const Divider(
-            color: Colors.black,
-            height: 1,
-            thickness: 1,
-          ),
-          BookDetailRow(
-            setting: 'year',
-            result: year,
-          ),
-          const Divider(
-            color: Colors.black,
-            height: 1,
-            thickness: 1,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8),
-            child: Row(
-              children: [
-                Container(
-                  width: 100,
-                  child: Text(
-                    'rating',
-                    textAlign: TextAlign.center,
-                  ),
+    return Column(
+      children: [
+        const Divider(
+          color: Colors.black,
+          height: 1,
+          thickness: 1,
+        ),
+        BookDetailRow(
+          setting: 'title',
+          result: title,
+        ),
+        const Divider(
+          color: Colors.black,
+          height: 1,
+          thickness: 1,
+        ),
+        BookDetailRow(
+          setting: 'subtitle',
+          result: subtitle,
+        ),
+        const Divider(
+          color: Colors.black,
+          height: 1,
+          thickness: 1,
+        ),
+        BookDetailRow(
+          setting: 'authors',
+          result: authors,
+        ),
+        const Divider(
+          color: Colors.black,
+          height: 1,
+          thickness: 1,
+        ),
+        BookDetailRow(
+          setting: 'publisher',
+          result: publisher,
+        ),
+        const Divider(
+          color: Colors.black,
+          height: 1,
+          thickness: 1,
+        ),
+        BookDetailRow(
+          setting: 'language',
+          result: language,
+        ),
+        const Divider(
+          color: Colors.black,
+          height: 1,
+          thickness: 1,
+        ),
+        BookDetailRow(
+          setting: 'isbn10',
+          result: isbn10,
+        ),
+        const Divider(
+          color: Colors.black,
+          height: 1,
+          thickness: 1,
+        ),
+        BookDetailRow(
+          setting: 'isbn13',
+          result: isbn13,
+        ),
+        const Divider(
+          color: Colors.black,
+          height: 1,
+          thickness: 1,
+        ),
+        BookDetailRow(
+          setting: 'pages',
+          result: pages,
+        ),
+        const Divider(
+          color: Colors.black,
+          height: 1,
+          thickness: 1,
+        ),
+        BookDetailRow(
+          setting: 'year',
+          result: year,
+        ),
+        const Divider(
+          color: Colors.black,
+          height: 1,
+          thickness: 1,
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8),
+          child: Row(
+            children: [
+              Container(
+                width: 100,
+                child: Text(
+                  'rating',
+                  textAlign: TextAlign.center,
                 ),
-                Expanded(
-                  child: Text(int.parse(rating).toString()),
-                ),
-              ],
-            ),
+              ),
+              Expanded(
+                child: Text(int.parse(rating).toString()),
+              ),
+            ],
           ),
-          const Divider(
-            color: Colors.black,
-            height: 1,
-            thickness: 1,
-          ),
-          BookDetailRow(
-            setting: 'desc',
-            result: desc,
-          ),
-          const Divider(
-            color: Colors.black,
-            height: 1,
-            thickness: 1,
-          ),
-          BookDetailRow(
-            setting: 'price',
-            result: price,
-          ),
-          const Divider(
-            color: Colors.black,
-            height: 1,
-            thickness: 1,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 44),
-            child: RaisedButton(
-                onPressed: () => _launchURL(url), child: Text("book's URL")),
-          ),
-        ],
-      ),
+        ),
+        const Divider(
+          color: Colors.black,
+          height: 1,
+          thickness: 1,
+        ),
+        BookDetailRow(
+          setting: 'desc',
+          result: desc,
+        ),
+        const Divider(
+          color: Colors.black,
+          height: 1,
+          thickness: 1,
+        ),
+        BookDetailRow(
+          setting: 'price',
+          result: price,
+        ),
+        const Divider(
+          color: Colors.black,
+          height: 1,
+          thickness: 1,
+        ),
+        Padding(
+          padding: const EdgeInsets.only(bottom: 44),
+          child: RaisedButton(
+              onPressed: () => _launchURL(url), child: Text("book's URL")),
+        ),
+      ],
     );
   }
 

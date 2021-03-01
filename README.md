@@ -4,9 +4,9 @@
 
 ## Getting Started
 
-상태관리 : Provider
+StateManagement : Provider
 
-폴더별 설명
+### Description of each folder
 
 ```
 main.dart : 실행 시작
@@ -20,5 +20,9 @@ routes : main.dart에 표현되는 Route 상수 정의
   /widget : 화면을 구성하는 서브 컴포넌트
 ```
 
+### TDD 
 
+  -Widget Test 
+
+  =http Test
 
